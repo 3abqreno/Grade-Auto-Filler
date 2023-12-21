@@ -34,6 +34,7 @@ def show_images(images,titles=None):
     n_ims = len(images)
     if titles is None: titles = ['(%d)' % i for i in range(1,n_ims + 1)]
     fig = plt.figure()
+    fig.patch.set_facecolor('xkcd:mint green')
     n = 1
     for image,title in zip(images,titles):
         a = fig.add_subplot(1,n_ims,n)
