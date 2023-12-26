@@ -1,36 +1,31 @@
 import tkinter as tk
 from tkinter import filedialog
+from app import *
 
 ocr_codes_selected = False
 ocr_first_question_selected = False
-
 def select_directory():
     directory = filedialog.askdirectory()
     print("Selected directory:", directory)
-    
+
     # Add your logic here to distinguish between Grades Sheet and Bubble images
     if selected_option.get() == "Grades Sheet":
         global ocr_codes_selected, ocr_first_question_selected
         ocr_codes_selected, ocr_first_question_selected = select_ocr()
         print("OCR for Codes selected:", ocr_codes_selected)
         print("OCR for First Question selected:", ocr_first_question_selected)
-    
+
     if directory:  # If a directory is selected
         run_btn.pack(side=tk.BOTTOM, pady=20)  # Display the "Run" button
     else:
         run_btn.pack_forget()  # Hide the "Run" button if no directory is selected
 
 def select_ocr():
-    ocr_codes_var = tk.IntVar()
-    ocr_first_question_var = tk.IntVar()
-    
-    ocr_codes_check = tk.Checkbutton(root, text="OCR for Codes", variable=ocr_codes_var)
-    ocr_codes_check.pack(pady=5)
-    
-    ocr_first_question_check = tk.Checkbutton(root, text="OCR for First Question", variable=ocr_first_question_var)
+    ocr = tk.IntVar()
+    ocr_first_question_check = tk.Checkbutton(root, text="OCR for First Question", variable=ocr)
     ocr_first_question_check.pack(pady=5)
-    
-    return ocr_codes_var.get(), ocr_first_question_var.get()
+
+    return ocr_codes_var.get(), ocr.get()
 
 def run_specific_function():
     # Call the function you want to execute when the "Run" button is clicked
@@ -45,9 +40,8 @@ def grades_sheet_selected():
 def bubble_selected():
     select_directory()
 
-
 def GUI():
-# Create the main window
+    # Create the main window
     root = tk.Tk()
     root.geometry("500x500")  # Size of the window
     root.title('Image Selection')
@@ -71,7 +65,10 @@ def GUI():
     root.configure(bg='#FFD700')  # Use a hexadecimal color code for a golden yellow background
 
     # Button to run a specific function initially hidden
-    run_btn = tk.Button(root, text='Run', command=run_specific_function, width=20)
+    run_btn = tk.Button(root, text='Run', command=lambda: get_samples_data(directory, ocr_codes_selected, ocr_first_question_selected), width=20)
     run_btn.pack_forget()  # Initially hide the "Run" button
 
-# root.mainloop()
+    root.mainloop()
+
+# Call the GUI function to run the application
+GUI()
