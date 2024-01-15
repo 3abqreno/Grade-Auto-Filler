@@ -53,11 +53,8 @@ The Bubble Sheet Solver utilizes advanced image processing techniques, including
 
      - Employ morphology operations to make a mask.
      - This step enhances the grading process by providing a clearer separation of individual responses.
-        <span style="opacity: 0.5; text-align: center; padding-left: 150px;">Contour mask</span>
-     ![](/BubbleSheet/Docs/mask.png)
-    <span style="opacity: 0.5; text-align: center; display: block;"></span>
-      <span style="opacity: 0.5; text-align: center; display: block;">Bubble lines</span>
-     ![](/BubbleSheet/Docs/lines.png)
+        
+     ![](/BubbleSheet/Docs/mask.png) ![](/BubbleSheet/Docs/lines.png)
 3. **Answer Extraction:**
    - Utilize `cv2.findContours` to identify bubble contours and count the number of lit pixels to determine whether a bubble was selected.
    - Read answers from a text file and compare them with the detected selections.
@@ -82,15 +79,13 @@ The Grade Sheet Module focuses on identifying grid patterns and numbers in sheet
 
 1. **input image:**
     -   
-   ![](/grid/Docs/start.jpg)
+   ![Input Image](/grid/Docs/start.jpg)
 
 2. **Preprocessing:**
     - first warp the image to the correct prespective
     - using hough transform to detect grid lines we first split the image into vertical lines and then into small cells.
-    <span style="opacity: 0.5; text-align: center; display: block;">Vertical Lines</span>
-   ![](/grid/Docs/split.png)
-   <span style="opacity: 0.5; text-align: center; display: block;">Output cells</span>
-   ![](/grid/Docs/result.png)
+   ![Vertical Lines](/grid/Docs/split.png)
+   ![Cells](/grid/Docs/result.png)
 
 
 3. **Detection Phase:**
