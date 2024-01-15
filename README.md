@@ -79,13 +79,13 @@ The Grade Sheet Module focuses on identifying grid patterns and numbers in sheet
 
 1. **input image:**
     -   
-   ![Input Image](/grid/Docs/start.jpg)
+   ![Input Image](/Grid/Docs/start.jpg)
 
 2. **Preprocessing:**
     - first warp the image to the correct prespective
     - using hough transform to detect grid lines we first split the image into vertical lines and then into small cells.
-   ![Vertical Lines](/grid/Docs/split.png)
-   ![Cells](/grid/Docs/result.png)
+   ![Vertical Lines](/Grid/Docs/split.png)
+   ![Cells](/Grid/Docs/result.png)
 
 
 3. **Detection Phase:**
